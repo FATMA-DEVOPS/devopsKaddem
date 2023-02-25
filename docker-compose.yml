@@ -12,30 +12,10 @@ services:
     volumes:
       - /home/vagrant/data/mysql:/var/lib/mysql
       
-   jenkins:
-   container_name: jenkins
-   image: jenkins/jenkins:lts
-   restart: on-failure
-   ports:
-      - 8080:8080
-   volumes:
-      - /home/vagrant/data/jenkins:/var/jenkins_home
-   
-   nexus:
-   container_name:nexus
-   image:sonatype/nexus3
-   restart: on-failure
-   ports:
-      - 8081:8081
-   volumes:
-      - /home/vagrant/data/nexus:/nexus-data
-      depends_on:
-      - jenkins
-   
 
   spring_app:
-    image: devopsKaddem
-    container_name: devopsKaddem
+    image: devopskaddem
+    container_name: devopskaddem
     restart: on-failure
     ports:
       - 9090:9090
