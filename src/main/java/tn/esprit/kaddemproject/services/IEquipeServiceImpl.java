@@ -11,6 +11,7 @@ import tn.esprit.kaddemproject.entities.Equipe;
 import tn.esprit.kaddemproject.entities.Etudiant;
 import tn.esprit.kaddemproject.entities.Niveau;
 import tn.esprit.kaddemproject.generic.IGenericServiceImp;
+import tn.esprit.kaddemproject.repositories.EquipeRepository;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 @Service
 public class IEquipeServiceImpl extends IGenericServiceImp<Equipe,Integer> implements IEquipeService{
 
+    EquipeRepository equipeRepository;
 
 
     @Transactional
@@ -56,6 +58,22 @@ public class IEquipeServiceImpl extends IGenericServiceImp<Equipe,Integer> imple
                             }
                 });
 
+    }
+
+    @Override
+    public Equipe addEquipe(Equipe e) {
+        return equipeRepository.save(e);
+    }
+
+
+    @Override
+    public void deleteEquipe(Integer idEquipe) {
+        equipeRepository.deleteById(idEquipe);
+
+    }
+    @Override
+    public Equipe retrieveEquipe(Integer idEquipe) {
+        return equipeRepository.findById(idEquipe).orElse(null);
     }
 
     public Boolean needsToUpgrade(Equipe equipe){

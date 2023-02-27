@@ -10,5 +10,9 @@ import java.util.List;
 public interface IEquipeService extends IGenericService<Equipe,Integer> {
 
     void faireEvoluerEquipes();
+    Equipe addEquipe(Equipe e);
+
+    void deleteEquipe(Integer idEquipe);
+    Equipe retrieveEquipe (Integer idEquipe);
 
 }
